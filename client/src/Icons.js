@@ -1,15 +1,15 @@
 import React from 'react'
 import { withBaseIcon } from 'react-icons-kit'
-import { home, user, bell, bookmark } from 'react-icons-kit/icomoon'
+import { home, user, bell, bookmark } from 'react-icons-kit/feather'
 
 // Rules for sidebar icons
 const SidebarIconWrapper = withBaseIcon({
-  size: 20,
+  size: 25,
   style: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'left',
     alignItems: 'center',
-    width: '30px',
+    width: '40px',
     height: '100%'
   }
 })
