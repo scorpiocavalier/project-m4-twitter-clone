@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { GlobalStyles } from './globalStyles'
+import styled from 'styled-components'
+import HomeFeed from './components/HomeFeed'
+import Notifications from './components/Notifications'
+import Bookmarks from './components/Bookmarks'
+import Profile from './components/Profile'
+import Sidebar from './components/Sidebar'
+import TweetDetails from './components/TweetDetails'
 
-function App() {
+export default () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <GlobalStyles />
+      <MainWrapper>
+        <Sidebar />
+        <Switch>
+          <Route exact path="/">
+            <HomeFeed />
+          </Route>
+          <Route path="/notifications">
+            <Notifications />
+          </Route>
+          <Route path="/bookmarks">
+            <Bookmarks />
+          </Route>
+          <Route path="/tweet/tweetId">
+            <TweetDetails />
+          </Route>
+          <Route path="/:profileId">
+            <Profile />
+          </Route>
+        </Switch>
+      </MainWrapper>
+    </Router>
+  )
 }
 
-export default App;
+const MainWrapper = styled.div`
+  display: flex;
+`
