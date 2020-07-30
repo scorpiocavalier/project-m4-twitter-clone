@@ -1,6 +1,6 @@
 import React from 'react'
 import { withBaseIcon } from 'react-icons-kit'
-import { home } from 'react-icons-kit/icomoon'
+import { home, user, bell, bookmark } from 'react-icons-kit/icomoon'
 
 // Rules for sidebar icons
 const SidebarIconWrapper = withBaseIcon({
@@ -15,3 +15,6 @@ const SidebarIconWrapper = withBaseIcon({
 })
 
 export const HomeIcon = () => <SidebarIconWrapper icon={ home } />
+export const UserIcon = () => <SidebarIconWrapper icon={ user } />
+export const NotificationIcon = () => <SidebarIconWrapper icon={ bell } />
+export const BookmarkIcon = () => <SidebarIconWrapper icon={ bookmark } />

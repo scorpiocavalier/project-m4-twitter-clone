@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { COLORS } from '../globalStyles'
 import { ReactComponent as Logo } from '../assets/logo.svg'
-import { HomeIcon } from '../Icons'
+import { HomeIcon, UserIcon, NotificationIcon, BookmarkIcon } from '../Icons'
 
 export default () => {
   return (
@@ -17,15 +17,15 @@ export default () => {
           <LinkTag>Home</LinkTag>
         </StyledLink>
         <StyledLink to={`/:profileId`}>
-          <HomeIcon />
+          <UserIcon />
           <LinkTag>Profile</LinkTag>
         </StyledLink>
         <StyledLink to={`/notifications`}>
-          <HomeIcon />
+          <NotificationIcon />
           <LinkTag>Notifications</LinkTag>
         </StyledLink>
         <StyledLink to={`/bookmarks`}>
-          <HomeIcon />
+          <BookmarkIcon />
           <LinkTag>Bookmarks</LinkTag>
         </StyledLink>
       </Navigation>
