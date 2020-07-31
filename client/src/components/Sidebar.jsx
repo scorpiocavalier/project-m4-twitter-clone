@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { COLORS } from '../globalStyles'
 import { ReactComponent as Logo } from '../assets/logo.svg'
 import { HomeIcon, UserIcon, NotificationIcon, BookmarkIcon } from '../Icons'
@@ -12,11 +12,11 @@ export default () => {
         <StyledLogo />
       </Link>
       <Navigation>
-        <StyledLink to={`/`}>
+        <StyledLink exact to={`/`}>
           <HomeIcon />
           <LinkTag>Home</LinkTag>
         </StyledLink>
-        <StyledLink to={`/:profileId`}>
+        <StyledLink to={`/profile/:profileId`}>
           <UserIcon />
           <LinkTag>Profile</LinkTag>
         </StyledLink>
@@ -49,9 +49,12 @@ const Navigation = styled.div`
   flex-direction: column;
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   display: flex;
   padding: 0 10px;
+  &.active {
+    color: ${COLORS.primary};
+  }
   &:hover {
     background: ${COLORS.primary_hover};
     border-radius: 25px;
