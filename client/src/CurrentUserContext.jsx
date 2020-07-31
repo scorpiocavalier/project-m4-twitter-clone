@@ -1,16 +1,8 @@
-import React, { createContext, useReducer, useEffect } from 'react'
+import React, { createContext, useReducer } from 'react'
+import { useLoadCurrentUser } from './hooks/useLoadCurrentUser'
+import { STATUS, ACTIONS } from './constants'
 
 export const CurrentUserContext = createContext(null)
-
-export const STATUS = {
-  LOADING: 'loading',
-  IDLE: 'idle',
-}
-
-export const ACTIONS = {
-  SET_USER: 'set-user',
-  SET_STATUS: 'set-status',
-}
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -29,14 +21,7 @@ const CurrentUserProvider = ({ children }) => {
     status: STATUS.LOADING,
   })
 
-  useEffect(() => {
-    fetch('/api/me/profile')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_USER, payload: { user: data.profile } })
-        dispatch({ type: ACTIONS.SET_STATUS, payload: { status: STATUS.IDLE } })
-      })
-  }, [])
+  useLoadCurrentUser(dispatch)
 
   return (
     <CurrentUserContext.Provider value={state}>
