@@ -1,19 +1,19 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { COLORS } from '../globalStyles'
 import { ReactComponent as Logo } from '../assets/logo.svg'
 import { HomeIcon, UserIcon, NotificationIcon, BookmarkIcon } from '../Icons'
 import { CurrentUserContext } from '../CurrentUserContext'
 
 export default () => {
-  const { currentUser, status } = useContext(CurrentUserContext)
+  const { currentUser } = useContext(CurrentUserContext)
 
   return (
     <Wrapper>
-      <Link to={'/'}>
+      <NavLink exact to={'/'}>
         <StyledLogo />
-      </Link>
+      </NavLink>
       <Navigation>
         <StyledLink exact to={`/`}>
           <HomeIcon />
