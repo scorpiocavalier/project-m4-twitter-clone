@@ -19,7 +19,7 @@ export default () => {
           <HomeIcon />
           <LinkTag>Home</LinkTag>
         </StyledLink>
-        <StyledLink to={`/profile/${currentUser.handle}`}>
+        <StyledLink to={`/${currentUser.handle}`}>
           <UserIcon />
           <LinkTag>Profile</LinkTag>
         </StyledLink>

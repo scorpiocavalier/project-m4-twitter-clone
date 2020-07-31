@@ -33,7 +33,7 @@ export default () => {
             <Route path="/tweet/:tweetId">
               <TweetDetails />
             </Route>
-            <Route path={`/profile/${currentUser.handle}`}>
+            <Route path={`/${currentUser.handle}`}>
               <Profile />
             </Route>
           </Switch>
