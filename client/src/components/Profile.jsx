@@ -39,9 +39,7 @@ export default () => {
           <Handle className="titleFont">{displayName}</Handle>
           <RowWrapper style={{ alignItems: 'center' }}>
             <SmallText>@{handle}</SmallText>
-            <FollowingText>
-              {isFollowingYou ? 'Follows you' : 'Follows you'}
-            </FollowingText>
+            {isFollowingYou && <FollowingText>Follows you</FollowingText>}
           </RowWrapper>
           <StyledSpan>{bio}</StyledSpan>
           <RowWrapper>
@@ -127,8 +125,8 @@ const SmallText = styled.span`
 
 const FollowingText = styled.span`
   background: #e8e9ef;
-  border-radius: 7px;
-  padding: 5px;
+  border-radius: 5px;
+  padding: 2px 5px;
   font-size: 80%;
   margin: 5px;
 `
