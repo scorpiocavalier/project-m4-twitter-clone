@@ -14,7 +14,7 @@ export default () => {
       <NavLink exact to={'/'}>
         <StyledLogo />
       </NavLink>
-      <Navigation>
+      <Navigation className="titleFont">
         <StyledLink exact to={`/`}>
           <HomeIcon />
           <LinkTag>Home</LinkTag>
@@ -40,6 +40,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin-right: 15px;
 `
 
 const StyledLogo = styled(Logo)`
@@ -70,7 +71,5 @@ const StyledLink = styled(NavLink)`
 
 const LinkTag = styled.div`
   font-size: 20px;
-  font-weight: 600;
   padding: 10px 5px;
-  font-family: 'arial';
 `

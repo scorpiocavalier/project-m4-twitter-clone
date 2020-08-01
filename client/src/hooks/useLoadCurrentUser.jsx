@@ -13,5 +13,7 @@ const fetchData = async (dispatch) => {
 }
 
 export const useLoadCurrentUser = (dispatch) => {
-  useEffect(() => { fetchData(dispatch) }, [])
+  useEffect(() => {
+    fetchData(dispatch)
+  }, [dispatch])
 }

@@ -1,5 +1,4 @@
-import React, { createContext, useReducer } from 'react'
-import { useLoadCurrentUser } from './hooks/useLoadCurrentUser'
+import React, { createContext, useReducer, useEffect } from 'react'
 import { STATUS, ACTIONS } from './constants'
 
 export const CurrentUserContext = createContext(null)
@@ -21,7 +20,19 @@ const CurrentUserProvider = ({ children }) => {
     status: STATUS.LOADING,
   })
 
-  useLoadCurrentUser(dispatch)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/me/profile')
+        const data = await res.json()
+        dispatch({ type: ACTIONS.SET_USER, payload: { user: data.profile } })
+        dispatch({ type: ACTIONS.SET_STATUS, payload: { status: STATUS.IDLE } })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchData()
+  }, [dispatch])
 
   return (
     <CurrentUserContext.Provider value={state}>
