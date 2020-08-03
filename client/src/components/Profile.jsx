@@ -6,6 +6,7 @@ import { COLORS } from '../globalStyles'
 import { LocationIcon, CalendarIcon } from '../Icons'
 import Handle from './Handle'
 import Tweet from './Tweet'
+import Timestamp from './Timestamp'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -23,9 +24,6 @@ export default () => {
     numFollowing,
     numLikes,
   } = currentUser
-
-  const date = moment(joined)
-  const monthYear = date.format('MMMM YYYY')
 
   return (
     <MainColWrapper>
@@ -51,7 +49,7 @@ export default () => {
             </StyledSpan>
             <StyledSpan>
               <CalendarIcon />
-              Joined {monthYear}
+              Joined <Timestamp timestamp={joined} />
             </StyledSpan>
           </RowWrapper>
           <RowWrapper>
