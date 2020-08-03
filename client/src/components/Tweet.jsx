@@ -1,26 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import Handle from './Handle'
-import Timestamp from './Timestamp'
-import { CurrentUserContext } from '../CurrentUserContext'
+// import Timestamp from './Timestamp'
 
-export default () => {
-  const { currentUser } = useContext(CurrentUserContext)
-  const {
-    handle,
-  } = currentUser
-
+export default ({ tweet: { status } }) => {
   return (
     <ColWrapper>
-      <Handle handle={handle} />
+      <h1>{status}</h1>
     </ColWrapper>
   )
 }
 
-const RowWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
+// const RowWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `
 
 const ColWrapper = styled.div`
   display: flex;

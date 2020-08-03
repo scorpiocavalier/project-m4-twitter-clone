@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { COLORS } from '../globalStyles'
 import { LocationIcon, CalendarIcon } from '../Icons'
 import Handle from './Handle'
-import Tweet from './Tweet'
 import Timestamp from './Timestamp'
 import { ProfileAvatar } from './Avatar'
+import TweetFeed from './TweetFeed'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -22,7 +22,7 @@ export default () => {
     location,
     numFollowers,
     numFollowing,
-    numLikes,
+    // numLikes,
   } = currentUser
 
   return (
@@ -62,10 +62,11 @@ export default () => {
           </RowWrapper>
         </ProfileWrapper>
         {/* ActionBar Tweets/Media/Likes */}
-        <ColWrapper>
-          {/* List of tweets by the user */}
-          <Tweet />
-        </ColWrapper>
+        {currentUser && (
+          <ColWrapper>
+            <TweetFeed />
+          </ColWrapper>
+        )}
       </ColWrapper>
     </MainColWrapper>
   )

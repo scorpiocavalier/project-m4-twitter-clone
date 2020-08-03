@@ -21,7 +21,7 @@ const CurrentUserProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfileUserData = async () => {
       try {
         const res = await fetch('/api/me/profile')
         const data = await res.json()
@@ -31,7 +31,7 @@ const CurrentUserProvider = ({ children }) => {
         console.error(error)
       }
     }
-    fetchData()
+    fetchProfileUserData()
   }, [dispatch])
 
   return (

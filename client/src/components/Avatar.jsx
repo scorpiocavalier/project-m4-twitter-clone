@@ -10,7 +10,7 @@ export const ProfileAvatar = ({ src, size }) => {
 }
 
 const AvatarImg = styled.img`
-  width: 100px;
+  width: 75px;
   border-radius: 50%;
 `
 
