@@ -1,23 +1,13 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Handle from './Handle'
+import Timestamp from './Timestamp'
 import { CurrentUserContext } from '../CurrentUserContext'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
   const {
-    avatarSrc,
-    bannerSrc,
-    bio,
-    displayName,
     handle,
-    isBeingFollowedByYou,
-    isFollowingYou,
-    joined,
-    location,
-    numFollowers,
-    numFollowing,
-    numLikes,
   } = currentUser
 
   return (

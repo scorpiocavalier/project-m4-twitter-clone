@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import moment from 'moment'
 import { CurrentUserContext } from '../CurrentUserContext'
 import styled from 'styled-components'
 import { COLORS } from '../globalStyles'
@@ -7,6 +6,7 @@ import { LocationIcon, CalendarIcon } from '../Icons'
 import Handle from './Handle'
 import Tweet from './Tweet'
 import Timestamp from './Timestamp'
+import { ProfileAvatar } from './Avatar'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -27,7 +27,7 @@ export default () => {
 
   return (
     <MainColWrapper>
-      <Avatar src={avatarSrc} />
+      <ProfileAvatar src={avatarSrc} size={'125px'} />
       <ColWrapper style={{ position: 'relative', top: '-131px' }}>
         <Banner src={bannerSrc} />
         <ColWrapper style={{ alignItems: 'flex-end', padding: '20px 15px' }}>
@@ -61,9 +61,9 @@ export default () => {
             </StyledSpan>
           </RowWrapper>
         </ProfileWrapper>
-        {/* ActionBar Tweets/Media/Likes */ }
+        {/* ActionBar Tweets/Media/Likes */}
         <ColWrapper>
-          {/* List of tweets by the user */ }
+          {/* List of tweets by the user */}
           <Tweet />
         </ColWrapper>
       </ColWrapper>
@@ -88,16 +88,6 @@ const RowWrapper = styled.div`
 const Banner = styled.img`
   width: 100%;
   height: 200px;
-`
-
-const Avatar = styled.img`
-  width: 125px;
-  border-radius: 50%;
-  border: 3px solid white;
-  position: relative;
-  top: 135px;
-  left: 15px;
-  z-index: 1;
 `
 
 const ProfileWrapper = styled.div`
