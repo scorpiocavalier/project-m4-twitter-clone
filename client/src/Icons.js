@@ -34,6 +34,6 @@ export const CalendarIcon = () => <ProfileIconWrapper icon={ calendar } />
 export const RepeatIconSmall = () => <ProfileIconWrapper icon={ repeat } />
 
 export const CommentIcon = () => <TweetIconWrapper icon={ messageCircle } />
-export const RepeatIcon = () => <TweetIconWrapper icon={ repeat } />
 export const HeartIcon = () => <TweetIconWrapper icon={ heart } />
+export const RepeatIcon = () => <TweetIconWrapper icon={ repeat } />
 export const ShareIcon = () => <TweetIconWrapper icon={ share } />

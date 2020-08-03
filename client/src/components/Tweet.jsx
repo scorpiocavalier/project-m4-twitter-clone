@@ -11,19 +11,13 @@ export default ({ tweet }) => {
   const { currentUser } = useContext(CurrentUserContext)
 
   const {
-    author: {
-      avatarSrc,
-      displayName,
-      handle,
-    },
-    // isLiked,
+    author: { avatarSrc, displayName, handle },
     isRetweeted,
-    media, // array {type: 'img', url: '...jpeg'}
-    // numLikes,
-    // numRetweets,
+    media,
     status,
     timestamp,
   } = tweet
+
   return (
     <ColTweetWrapper>
       {isRetweeted && (

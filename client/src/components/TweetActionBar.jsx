@@ -5,10 +5,18 @@ import { CommentIcon, RepeatIcon, HeartIcon, ShareIcon } from '../Icons'
 export default () => {
   return (
     <RowWrapper>
-      <Action><CommentIcon /></Action>
-      <Action><RepeatIcon /></Action>
-      <Action><HeartIcon /></Action>
-      <Action><ShareIcon /></Action>
+      <Action>
+        <CommentIcon />
+      </Action>
+      <Action>
+        <RepeatIcon />
+      </Action>
+      <Action>
+        <HeartIcon />
+      </Action>
+      <Action>
+        <ShareIcon />
+      </Action>
     </RowWrapper>
   )
 }
@@ -19,6 +27,4 @@ const RowWrapper = styled.div`
   padding-top: 15px;
 `
 
-const Action = styled.button`
-
-`
+const Action = styled.button``
