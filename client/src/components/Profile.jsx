@@ -7,6 +7,7 @@ import Handle from './Handle'
 import Timestamp from './Timestamp'
 import { ProfileAvatar } from './Avatar'
 import TweetFeed from './TweetFeed'
+import ProfileActionBar from './ProfileActionBar'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -31,7 +32,7 @@ export default () => {
       <ColWrapper style={{ position: 'relative', top: '-131px' }}>
         <Banner src={bannerSrc} />
         <ColWrapper style={{ alignItems: 'flex-end', padding: '20px 15px' }}>
-          <Button style={{ background: COLORS.primary }}>
+          <Button className="btn-with-shadow" style={{ background: COLORS.primary }}>
             {isBeingFollowedByYou ? 'Following' : 'Follow'}
           </Button>
         </ColWrapper>
@@ -61,7 +62,7 @@ export default () => {
             </StyledSpan>
           </RowWrapper>
         </ProfileWrapper>
-        {/* ActionBar Tweets/Media/Likes */}
+        <ProfileActionBar />
         {currentUser && (
           <ColWrapper>
             <TweetFeed />
