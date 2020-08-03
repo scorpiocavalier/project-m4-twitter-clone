@@ -4,6 +4,8 @@ import { CurrentUserContext } from '../CurrentUserContext'
 import styled from 'styled-components'
 import { COLORS } from '../globalStyles'
 import { LocationIcon, CalendarIcon } from '../Icons'
+import Handle from './Handle'
+import Tweet from './Tweet'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -36,9 +38,9 @@ export default () => {
           </Button>
         </ColWrapper>
         <ProfileWrapper>
-          <Handle className="titleFont">{displayName}</Handle>
+          <DisplayName className="titleFont">{displayName}</DisplayName>
           <RowWrapper style={{ alignItems: 'center' }}>
-            <SmallText>@{handle}</SmallText>
+            <Handle handle={handle} />
             {isFollowingYou && <FollowingText>Follows you</FollowingText>}
           </RowWrapper>
           <StyledSpan>{bio}</StyledSpan>
@@ -61,6 +63,11 @@ export default () => {
             </StyledSpan>
           </RowWrapper>
         </ProfileWrapper>
+        {/* ActionBar Tweets/Media/Likes */ }
+        <ColWrapper>
+          {/* List of tweets by the user */ }
+          <Tweet />
+        </ColWrapper>
       </ColWrapper>
     </MainColWrapper>
   )
@@ -100,7 +107,7 @@ const ProfileWrapper = styled.div`
   flex-direction: column;
 `
 
-const Handle = styled.span`
+const DisplayName = styled.span`
   font-size: 22px;
   margin-left: 15px;
 `
@@ -116,11 +123,6 @@ const Button = styled.button`
 
 const StyledSpan = styled.span`
   margin: 10px 15px;
-`
-
-const SmallText = styled.span`
-  font-size: 90%;
-  margin: 5px 0 5px 15px;
 `
 
 const FollowingText = styled.span`
