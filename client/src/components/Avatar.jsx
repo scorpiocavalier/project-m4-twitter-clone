@@ -11,11 +11,14 @@ export const ProfileAvatar = ({ src, size }) => {
 
 const AvatarImg = styled.img`
   width: 75px;
+  height: 75px;
   border-radius: 50%;
+  margin-right: 15px;
 `
 
 const ProfileAvatarImg = styled(AvatarImg)`
   width: ${(p) => p.size};
+  height: ${(p) => p.size};
   border: 3px solid white;
   position: relative;
   top: 135px;

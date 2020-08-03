@@ -21,7 +21,6 @@ export default () => {
     <TweetFeedWrapper>
       {feed &&
         Object.values(feed).map((tweet, index) => {
-          console.count('return');
           return <Tweet key={index} tweet={tweet} />
         })}
     </TweetFeedWrapper>

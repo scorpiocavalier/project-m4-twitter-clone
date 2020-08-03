@@ -37,7 +37,7 @@ export default () => {
         </ColWrapper>
         <ProfileWrapper>
           <DisplayName className="titleFont">{displayName}</DisplayName>
-          <RowWrapper style={{ alignItems: 'center' }}>
+          <RowWrapper style={{ marginLeft: "10px" }}>
             <Handle handle={handle} />
             {isFollowingYou && <FollowingText>Follows you</FollowingText>}
           </RowWrapper>
@@ -49,7 +49,7 @@ export default () => {
             </StyledSpan>
             <StyledSpan>
               <CalendarIcon />
-              Joined <Timestamp timestamp={joined} />
+              Joined<Timestamp timestamp={joined} />
             </StyledSpan>
           </RowWrapper>
           <RowWrapper>
