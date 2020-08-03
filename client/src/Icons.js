@@ -1,6 +1,6 @@
 import React from 'react'
 import { withBaseIcon } from 'react-icons-kit'
-import { home, user, bell, bookmark, repeat } from 'react-icons-kit/feather'
+import { home, user, bell, bookmark, messageCircle, repeat, heart, share } from 'react-icons-kit/feather'
 import { location, calendar } from 'react-icons-kit/entypo'
 
 // Rules for sidebar icons
@@ -20,6 +20,10 @@ const ProfileIconWrapper = withBaseIcon({
   style: { marginRight: "8px" }
 })
 
+const TweetIconWrapper = withBaseIcon({
+  size: 22,
+})
+
 export const HomeIcon = () => <SidebarIconWrapper icon={ home } />
 export const UserIcon = () => <SidebarIconWrapper icon={ user } />
 export const NotificationIcon = () => <SidebarIconWrapper icon={ bell } />
@@ -27,4 +31,9 @@ export const BookmarkIcon = () => <SidebarIconWrapper icon={ bookmark } />
 
 export const LocationIcon = () => <ProfileIconWrapper icon={ location } />
 export const CalendarIcon = () => <ProfileIconWrapper icon={ calendar } />
-export const RepeatIcon = () => <ProfileIconWrapper icon={ repeat } />
+export const RepeatIconSmall = () => <ProfileIconWrapper icon={ repeat } />
+
+export const CommentIcon = () => <TweetIconWrapper icon={ messageCircle } />
+export const RepeatIcon = () => <TweetIconWrapper icon={ repeat } />
+export const HeartIcon = () => <TweetIconWrapper icon={ heart } />
+export const ShareIcon = () => <TweetIconWrapper icon={ share } />

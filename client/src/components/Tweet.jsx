@@ -4,7 +4,8 @@ import { CurrentUserContext } from '../CurrentUserContext'
 import Timestamp from './Timestamp'
 import Avatar from './Avatar'
 import Handle from './Handle'
-import { RepeatIcon } from '../Icons'
+import { RepeatIconSmall } from '../Icons'
+import TweetActionBar from './TweetActionBar'
 
 export default ({ tweet }) => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -12,19 +13,9 @@ export default ({ tweet }) => {
   const {
     author: {
       avatarSrc,
-      // bannerSrc,
-      // bio,
       displayName,
       handle,
-      // isBeingFollowedByYou,
-      // isFollowingYou,
-      // joined,
-      // location,
-      // numFollowers,
-      // numFollowing,
-      //numLikes,
     },
-    // id,
     // isLiked,
     isRetweeted,
     media, // array {type: 'img', url: '...jpeg'}
@@ -37,7 +28,7 @@ export default ({ tweet }) => {
     <ColTweetWrapper>
       {isRetweeted && (
         <RowRetweetWrapper>
-          <RepeatIcon />
+          <RepeatIconSmall />
           {currentUser.displayName} Remeowed
         </RowRetweetWrapper>
       )}
@@ -55,9 +46,7 @@ export default ({ tweet }) => {
       </RowWrapper>
       <ColMediaWrapper>
         {media.length ? <MediaWrapper src={media[0].url} /> : null}
-        <div style={{ width: '100%', background: 'lightgreen' }}>
-          ACTION BAR
-        </div>
+        <TweetActionBar />
       </ColMediaWrapper>
     </ColTweetWrapper>
   )

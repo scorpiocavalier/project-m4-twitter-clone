@@ -23,7 +23,6 @@ export default () => {
     location,
     numFollowers,
     numFollowing,
-    // numLikes,
   } = currentUser
 
   return (
