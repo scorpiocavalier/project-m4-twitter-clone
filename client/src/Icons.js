@@ -25,12 +25,20 @@ const TweetIconWrapper = withBaseIcon({
   size: 22,
 })
 
+const TweetGreenIconWrapper = withBaseIcon({
+  size: 22,
+  style: { color: 'green' }
+})
+
+const TweetBlueIconWrapper = withBaseIcon({
+  size: 22,
+  style: { color: 'blue' }
+})
+
 const TweetRedIconWrapper = withBaseIcon({
   size: 22,
   style: { color: 'red' }
 })
-
-
 
 export const HomeIcon = () => <SidebarIconWrapper icon={ home } />
 export const UserIcon = () => <SidebarIconWrapper icon={ user } />
@@ -42,7 +50,11 @@ export const CalendarIcon = () => <ProfileIconWrapper icon={ calendar } />
 export const RepeatIconSmall = () => <ProfileIconWrapper icon={ repeat } />
 
 export const CommentIcon = () => <TweetIconWrapper icon={ messageCircle } />
-export const HeartIcon = () => <TweetIconWrapper icon={ heart } />
-export const LikedHeartIcon = () => <TweetRedIconWrapper icon={ fullHeart } />
 export const RepeatIcon = () => <TweetIconWrapper icon={ repeat } />
+export const HeartIcon = () => <TweetIconWrapper icon={ heart } />
 export const ShareIcon = () => <TweetIconWrapper icon={ share } />
+
+export const CommentIcon2 = () => <TweetGreenIconWrapper icon={ messageCircle } />
+export const RepeatIcon2 = () => <TweetBlueIconWrapper icon={ repeat } />
+export const HeartIcon2 = () => <TweetRedIconWrapper icon={ fullHeart } />
+export const ShareIcon2 = () => <TweetBlueIconWrapper icon={ share } />
