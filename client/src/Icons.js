@@ -9,7 +9,7 @@ const SidebarIconWrapper = withBaseIcon({
   size: 25,
   style: {
     display: 'flex',
-    justifyContent: 'left',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '40px',
     height: '100%'

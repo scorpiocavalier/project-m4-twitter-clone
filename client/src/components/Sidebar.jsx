@@ -55,7 +55,7 @@ const Navigation = styled.div`
 
 const StyledLink = styled(NavLink)`
   display: flex;
-  padding: 0 10px;
+  padding: 10px 5px;
   &.active {
     color: ${COLORS.primary};
   }
@@ -71,5 +71,7 @@ const StyledLink = styled(NavLink)`
 
 const LinkTag = styled.div`
   font-size: 20px;
-  padding: 10px 5px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
