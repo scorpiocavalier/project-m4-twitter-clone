@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { CurrentUserContext } from '../CurrentUserContext'
-import Tweet from './Tweet'
 import styled from 'styled-components'
+
+import Tweet from './Tweet'
+import { CurrentUserContext } from '../CurrentUserContext'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)

@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { STATUS, ACTIONS } from './constants'
+
+import { STATUS, ACTIONS } from '../constants'
 
 export const CurrentUserContext = createContext(null)
 

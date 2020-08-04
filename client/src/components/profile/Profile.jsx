@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
-import { CurrentUserContext } from '../CurrentUserContext'
 import styled from 'styled-components'
-import { COLORS } from '../globalStyles'
-import { LocationIcon, CalendarIcon } from '../Icons'
-import Handle from './Handle'
-import Timestamp from './Timestamp'
-import { ProfileAvatar } from './Avatar'
-import TweetFeed from './TweetFeed'
+
 import ProfileActionBar from './ProfileActionBar'
+import TweetHandle from '../tweet/TweetHandle'
+import TweetFeed from '../tweet/TweetFeed'
+import Timestamp from '../Timestamp'
+import { CurrentUserContext } from '../CurrentUserContext'
+import { LocationIcon, CalendarIcon } from '../Icons'
+import { ProfileAvatar } from '../Avatar'
+import { COLORS } from '../../globalStyles'
 
 export default () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -43,7 +44,7 @@ export default () => {
         <ProfileWrapper>
           <DisplayName className="titleFont">{displayName}</DisplayName>
           <RowWrapper style={{ marginLeft: '10px' }}>
-            <Handle handle={handle} />
+            <TweetHandle handle={handle} />
             {isFollowingYou && <FollowingText>Follows you</FollowingText>}
           </RowWrapper>
           <StyledSpan>{bio}</StyledSpan>

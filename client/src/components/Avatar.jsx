@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default ({ src }) => {
-  return <AvatarImg src={src} />
-}
+export default ({ src }) => <AvatarImg src={src} />
 
 export const ProfileAvatar = ({ src, size }) => {
-  return <ProfileAvatarImg src={ src } size={ size } />
+  return <ProfileAvatarImg src={src} size={size} />
 }
 
 const AvatarImg = styled.img`

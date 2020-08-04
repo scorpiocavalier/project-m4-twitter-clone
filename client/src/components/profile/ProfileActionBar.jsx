@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS } from '../globalStyles'
+
+import { COLORS } from '../../globalStyles'
 
 export default () => {
 

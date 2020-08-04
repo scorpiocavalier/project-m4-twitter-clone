@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CurrentUserContext } from '../CurrentUserContext'
-import Timestamp from './Timestamp'
-import Avatar from './Avatar'
-import Handle from './Handle'
-import { RepeatIconSmall } from '../Icons'
+
 import TweetActionBar from './TweetActionBar'
+import TweetHandle from './TweetHandle'
+import Avatar from '../Avatar'
+import Timestamp from '../Timestamp'
+import { RepeatIconSmall } from '../Icons'
+import { CurrentUserContext } from '../CurrentUserContext'
 
 export default ({ tweet }) => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -33,7 +34,7 @@ export default ({ tweet }) => {
             <BoldText tabIndex="0" aria-label={displayName}>
               {displayName}
             </BoldText>
-            <Handle handle={handle} />
+            <TweetHandle handle={handle} />
             {`·`}
             <Timestamp timestamp={timestamp} />
           </RowWrapper>
