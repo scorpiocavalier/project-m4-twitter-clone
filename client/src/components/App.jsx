@@ -7,6 +7,7 @@ import Profile from './profile/Profile'
 import Sidebar from './sidebar/Sidebar'
 import TweetDetails from './tweet/TweetDetails'
 import Error from './error/Error'
+import Spinner from './spinner/Spinner'
 import { CurrentUserContext } from './CurrentUserContext'
 import { GlobalStyles } from '../globalStyles'
 import { STATUS } from '../constants'
@@ -19,11 +20,7 @@ export default () => {
       case STATUS.ERROR:
         return <Error />
       case STATUS.LOADING:
-        return (
-          <LoadingWrapper>
-            <Spinner>LOADING...</Spinner>
-          </LoadingWrapper>
-        )
+        return <Spinner />
       case STATUS.IDLE:
         return (
           <Switch>
@@ -43,7 +40,8 @@ export default () => {
             </Route>
           </Switch>
         )
-      default: return
+      default:
+        return
     }
   }
 
@@ -60,15 +58,4 @@ export default () => {
 
 const MainWrapper = styled.div`
   display: flex;
-`
-
-const LoadingWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`
-
-const Spinner = styled.span`
-  padding: 15px;
 `
