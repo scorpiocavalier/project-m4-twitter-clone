@@ -28,7 +28,7 @@ export default () => {
   return (
     <MainColWrapper>
       <ProfileAvatar src={avatarSrc} size={'125px'} />
-      <ColWrapper style={{ position: 'relative', top: '-131px' }}>
+      <ColWrapper style={{ position: 'relative', top: '-133px' }}>
         <Banner src={bannerSrc} />
         <ColWrapper style={{ alignItems: 'flex-end', padding: '20px 15px' }}>
           <Button className="btn-with-shadow" style={{ background: COLORS.primary }}>
