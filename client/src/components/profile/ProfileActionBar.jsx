@@ -6,7 +6,7 @@ import { COLORS } from '../../globalStyles'
 export default () => {
 
   return (
-    <RowWrapper tabIndex="0" aria-label="Profile Action Bar">
+    <RowWrapper>
       <Action tabIndex="0" aria-label="Tweets Tab" active="true">
         Tweets
       </Action>
