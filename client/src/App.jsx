@@ -11,15 +11,18 @@ import TweetDetails from './components/TweetDetails'
 import { CurrentUserContext } from './CurrentUserContext'
 
 export default () => {
-  const { currentUser, status } = useContext(CurrentUserContext)
+  const { status } = useContext(CurrentUserContext)
 
   return (
     <Router>
       <GlobalStyles />
-      {status === 'loading' && <h1>LOADING...</h1>}
-      {status === 'idle' && (
-        <MainWrapper>
-          <Sidebar />
+      <MainWrapper>
+        <Sidebar />
+        {status === 'loading' ? (
+          <LoadingWrapper>
+            <Spinner>LOADING...</Spinner>
+          </LoadingWrapper>
+        ) : (
           <Switch>
             <Route exact path="/">
               <HomeFeed />
@@ -33,16 +36,27 @@ export default () => {
             <Route path="/tweet/:tweetId">
               <TweetDetails />
             </Route>
-            <Route path={`/${currentUser.handle}`}>
+            <Route path={`/profile`}>
               <Profile />
             </Route>
           </Switch>
-        </MainWrapper>
-      )}
+        )}
+      </MainWrapper>
     </Router>
   )
 }
 
 const MainWrapper = styled.div`
   display: flex;
+`
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+`
+
+const Spinner = styled.span`
+  padding: 15px;
 `
