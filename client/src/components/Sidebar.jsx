@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { COLORS } from '../globalStyles'
 import { ReactComponent as Logo } from '../assets/logo.svg'
 import { HomeIcon, UserIcon, NotificationIcon, BookmarkIcon } from '../Icons'
-import { CurrentUserContext } from '../CurrentUserContext'
 
 export default () => {
-  const { currentUser } = useContext(CurrentUserContext)
-
   return (
     <Wrapper>
       <NavLink exact to={'/'}>
