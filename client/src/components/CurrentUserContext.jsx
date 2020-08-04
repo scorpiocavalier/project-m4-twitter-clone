@@ -29,7 +29,10 @@ const CurrentUserProvider = ({ children }) => {
         dispatch({ type: ACTIONS.SET_USER, payload: { user: data.profile } })
         dispatch({ type: ACTIONS.SET_STATUS, payload: { status: STATUS.IDLE } })
       } catch (error) {
-        console.error(error)
+        dispatch({
+          type: ACTIONS.SET_STATUS,
+          payload: { status: STATUS.ERROR },
+        })
       }
     }
     fetchProfileUserData()

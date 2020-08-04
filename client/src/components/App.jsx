@@ -6,22 +6,26 @@ import HomeFeed from './home/HomeFeed'
 import Profile from './profile/Profile'
 import Sidebar from './sidebar/Sidebar'
 import TweetDetails from './tweet/TweetDetails'
+import Error from './error/Error'
 import { CurrentUserContext } from './CurrentUserContext'
 import { GlobalStyles } from '../globalStyles'
+import { STATUS } from '../constants'
 
 export default () => {
   const { status } = useContext(CurrentUserContext)
 
-  return (
-    <Router>
-      <GlobalStyles />
-      <MainWrapper>
-        <Sidebar />
-        {status === 'loading' ? (
+  const renderByStatus = () => {
+    switch (status) {
+      case STATUS.ERROR:
+        return <Error />
+      case STATUS.LOADING:
+        return (
           <LoadingWrapper>
             <Spinner>LOADING...</Spinner>
           </LoadingWrapper>
-        ) : (
+        )
+      case STATUS.IDLE:
+        return (
           <Switch>
             <Route exact path="/">
               <HomeFeed />
@@ -38,7 +42,17 @@ export default () => {
               <Profile />
             </Route>
           </Switch>
-        )}
+        )
+      default: return
+    }
+  }
+
+  return (
+    <Router>
+      <GlobalStyles />
+      <MainWrapper>
+        <Sidebar />
+        {renderByStatus()}
       </MainWrapper>
     </Router>
   )
