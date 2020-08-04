@@ -19,7 +19,7 @@ export default ({ tweet }) => {
   } = tweet
 
   return (
-    <ColTweetWrapper>
+    <ColTweetWrapper tabIndex="0" aria-label="Follow Button">
       {isRetweeted && (
         <RowRetweetWrapper>
           <RepeatIconSmall />
@@ -30,7 +30,9 @@ export default ({ tweet }) => {
         <Avatar src={avatarSrc} />
         <ColWrapper>
           <RowWrapper>
-            <BoldText>{displayName}</BoldText>
+            <BoldText tabIndex="0" aria-label={displayName}>
+              {displayName}
+            </BoldText>
             <Handle handle={handle} />
             {`·`}
             <Timestamp timestamp={timestamp} />

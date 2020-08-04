@@ -31,13 +31,18 @@ export default () => {
       <ColWrapper style={{ position: 'relative', top: '-133px' }}>
         <Banner src={bannerSrc} />
         <ColWrapper style={{ alignItems: 'flex-end', padding: '20px 15px' }}>
-          <Button className="btn-with-shadow" style={{ background: COLORS.primary }}>
+          <Button
+            className="btn-with-shadow"
+            style={{ background: COLORS.primary }}
+            tabIndex="0"
+            aria-label="Follow Button"
+          >
             {isBeingFollowedByYou ? 'Following' : 'Follow'}
           </Button>
         </ColWrapper>
         <ProfileWrapper>
           <DisplayName className="titleFont">{displayName}</DisplayName>
-          <RowWrapper style={{ marginLeft: "10px" }}>
+          <RowWrapper style={{ marginLeft: '10px' }}>
             <Handle handle={handle} />
             {isFollowingYou && <FollowingText>Follows you</FollowingText>}
           </RowWrapper>
@@ -49,7 +54,8 @@ export default () => {
             </StyledSpan>
             <StyledSpan>
               <CalendarIcon />
-              Joined<Timestamp timestamp={joined} />
+              Joined
+              <Timestamp timestamp={joined} />
             </StyledSpan>
           </RowWrapper>
           <RowWrapper>

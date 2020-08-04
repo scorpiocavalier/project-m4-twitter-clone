@@ -23,7 +23,6 @@ export const GlobalStyles = createGlobalStyle`
 
   button {
     border: none;
-    outline: none;
     background: none;
   }
 
