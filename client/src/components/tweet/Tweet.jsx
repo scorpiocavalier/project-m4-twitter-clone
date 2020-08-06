@@ -24,13 +24,13 @@ export default ({ tweet }) => {
 
   return (
     <ColTweetWrapper tabIndex="0" aria-label="Tweet">
-      <Button to='/profile'>
-        {isRetweeted && (
-          <RowRetweetWrapper>
-            <RepeatIconSmall />
-            {currentUser.displayName} Remeowed
-          </RowRetweetWrapper>
-        )}
+      {isRetweeted && (
+        <RowRetweetWrapper>
+          <RepeatIconSmall />
+          {currentUser.displayName} Remeowed
+        </RowRetweetWrapper>
+      )}
+      <Button to="/profile">
         <RowWrapper>
           <Avatar src={avatarSrc} />
           <ColWrapper>
@@ -45,11 +45,11 @@ export default ({ tweet }) => {
             <p>{status}</p>
           </ColWrapper>
         </RowWrapper>
-        <ColMediaWrapper>
-          {media.length ? <MediaWrapper src={media[0].url} /> : null}
-          <TweetActionBar />
-        </ColMediaWrapper>
       </Button>
+      <ColMediaWrapper>
+        {media.length ? <MediaWrapper src={media[0].url} /> : null}
+        <TweetActionBar />
+      </ColMediaWrapper>
     </ColTweetWrapper>
   )
 }
