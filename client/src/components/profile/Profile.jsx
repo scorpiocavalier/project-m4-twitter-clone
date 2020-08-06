@@ -11,7 +11,7 @@ import { ProfileAvatar } from '../Avatar'
 import { COLORS } from '../../globalStyles'
 
 export default () => {
-  const { currentUser } = useContext(CurrentUserContext)
+  const { currentUser, profileFeed } = useContext(CurrentUserContext)
   const {
     avatarSrc,
     bannerSrc,
@@ -71,7 +71,7 @@ export default () => {
         <ProfileActionBar />
         {currentUser && (
           <ColWrapper>
-            <TweetFeed />
+            <TweetFeed feed={profileFeed} />
           </ColWrapper>
         )}
       </ColWrapper>

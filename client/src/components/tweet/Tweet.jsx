@@ -20,8 +20,6 @@ export default ({ tweet }) => {
     timestamp,
   } = tweet
 
-  console.log(currentUser)
-
   return (
     <ColTweetWrapper tabIndex="0" aria-label="Tweet">
       {isRetweeted && (

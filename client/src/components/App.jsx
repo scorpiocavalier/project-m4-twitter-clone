@@ -2,18 +2,18 @@ import React, { useContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import HomeFeed from './home/HomeFeed'
 import Profile from './profile/Profile'
 import Sidebar from './sidebar/Sidebar'
+import TweetFeed from './tweet/TweetFeed'
 import TweetDetails from './tweet/TweetDetails'
 import Error from './error/Error'
 import Spinner from './spinner/Spinner'
 import { CurrentUserContext } from './CurrentUserContext'
 import { GlobalStyles } from '../globalStyles'
-import { STATUS } from '../constants'
+import { STATUS } from '../actions'
 
 export default () => {
-  const { status } = useContext(CurrentUserContext)
+  const { status, homeFeed } = useContext(CurrentUserContext)
 
   const renderByStatus = () => {
     switch (status) {
@@ -25,13 +25,13 @@ export default () => {
         return (
           <Switch>
             <Route exact path="/">
-              <HomeFeed />
+              <TweetFeed feed={homeFeed} />
             </Route>
             <Route
               path="/notifications"
-              render={() => <div>Notifications</div>}
+              render={() => <h1>Notifications</h1>}
             />
-            <Route path="/bookmarks" render={() => <div>Bookmarks</div>} />
+            <Route path="/bookmarks" render={() => <h1>Bookmarks</h1>} />
             <Route path="/tweet/:tweetId">
               <TweetDetails />
             </Route>

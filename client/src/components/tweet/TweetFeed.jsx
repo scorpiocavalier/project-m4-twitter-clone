@@ -1,23 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import Tweet from './Tweet'
-import { CurrentUserContext } from '../CurrentUserContext'
 
-export default () => {
-  const { currentUser } = useContext(CurrentUserContext)
-  const { handle } = currentUser
-  const [feed, setFeed] = useState({})
-
-  useEffect(() => {
-    const fetchProfileFeed = async () => {
-      const res = await fetch(`/api/${handle}/feed`)
-      const { tweetsById } = await res.json()
-      setFeed({ ...tweetsById })
-    }
-    fetchProfileFeed()
-  }, [handle])
-
+export default ({ feed }) => {
   return (
     <TweetFeedWrapper>
       {feed &&
