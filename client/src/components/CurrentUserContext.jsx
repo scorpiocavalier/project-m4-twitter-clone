@@ -49,7 +49,9 @@ const CurrentUserProvider = ({ children }) => {
     }
   }
 
-  useEffect(() => fetchAllData(), [])
+  useEffect(() => {
+    fetchAllData()
+  }, [])
 
   return (
     <CurrentUserContext.Provider value={state}>

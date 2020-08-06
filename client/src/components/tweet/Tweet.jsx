@@ -14,6 +14,7 @@ export default ({ tweet }) => {
 
   const {
     author: { avatarSrc, displayName, handle },
+    id,
     isRetweeted,
     media,
     status,
@@ -28,7 +29,7 @@ export default ({ tweet }) => {
           {currentUser.displayName} Remeowed
         </RowRetweetWrapper>
       )}
-      <Button to="/profile">
+      <Button to={`/tweet/${id}`}>
         <RowWrapper>
           <Avatar src={avatarSrc} />
           <ColWrapper>
@@ -86,6 +87,7 @@ const BoldText = styled.span`
 `
 
 const Button = styled(Link)`
+  color: black;
   &:hover {
     color: black;
   }
