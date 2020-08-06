@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { ACTION } from './TweetActionBar'
 
-export default ({ state, setState, icon1, icon2, hoverColor }) => {
-  const [count, setCount] = useState(0)
+export default ({ targetState, targetStateStr, dispatch, icon1, icon2, hoverColor }) => {
+  const [count, setCount] = useState(null)
 
   return (
     <Wrapper>
       <Action
         onClick={(e) => {
-          setState(!state)
-          setCount(!count ? 1 : 0)
+          dispatch({ type: ACTION.TOGGLE_STATE, payload: { targetStateStr } })
+          setCount(!count ? 1 : null)
         }}
         hoverColor={hoverColor}
       >
-        {state ? icon2 : icon1}
+        {targetState ? icon2 : icon1}
       </Action>
-      {state && <Counter>1</Counter>}
+      <Counter>{count}</Counter>
     </Wrapper>
   )
 }
@@ -35,6 +36,8 @@ const Action = styled.button`
 `
 
 const Counter = styled.span`
-  font-size: 22px;
-  padding-left: 5px;
+  font-size: 20px;
+  text-align: center;
+  width: 25px;
+  height: 25px;
 `
