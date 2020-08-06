@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import TweetActionBar from './TweetActionBar'
@@ -19,32 +20,36 @@ export default ({ tweet }) => {
     timestamp,
   } = tweet
 
+  console.log(currentUser)
+
   return (
-    <ColTweetWrapper tabIndex="0" aria-label="Follow Button">
-      {isRetweeted && (
-        <RowRetweetWrapper>
-          <RepeatIconSmall />
-          {currentUser.displayName} Remeowed
-        </RowRetweetWrapper>
-      )}
-      <RowWrapper>
-        <Avatar src={avatarSrc} />
-        <ColWrapper>
-          <RowWrapper>
-            <BoldText tabIndex="0" aria-label={displayName}>
-              {displayName}
-            </BoldText>
-            <TweetHandle handle={handle} />
-            {`·`}
-            <Timestamp timestamp={timestamp} />
-          </RowWrapper>
-          <p>{status}</p>
-        </ColWrapper>
-      </RowWrapper>
-      <ColMediaWrapper>
-        {media.length ? <MediaWrapper src={media[0].url} /> : null}
-        <TweetActionBar />
-      </ColMediaWrapper>
+    <ColTweetWrapper tabIndex="0" aria-label="Tweet">
+      <Button to='/profile'>
+        {isRetweeted && (
+          <RowRetweetWrapper>
+            <RepeatIconSmall />
+            {currentUser.displayName} Remeowed
+          </RowRetweetWrapper>
+        )}
+        <RowWrapper>
+          <Avatar src={avatarSrc} />
+          <ColWrapper>
+            <RowWrapper>
+              <BoldText tabIndex="0" aria-label={displayName}>
+                {displayName}
+              </BoldText>
+              <TweetHandle handle={handle} />
+              {`·`}
+              <Timestamp timestamp={timestamp} />
+            </RowWrapper>
+            <p>{status}</p>
+          </ColWrapper>
+        </RowWrapper>
+        <ColMediaWrapper>
+          {media.length ? <MediaWrapper src={media[0].url} /> : null}
+          <TweetActionBar />
+        </ColMediaWrapper>
+      </Button>
     </ColTweetWrapper>
   )
 }
@@ -80,4 +85,10 @@ const MediaWrapper = styled.img`
 
 const BoldText = styled.span`
   font-weight: 600;
+`
+
+const Button = styled(Link)`
+  &:hover {
+    color: black;
+  }
 `
