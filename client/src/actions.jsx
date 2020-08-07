@@ -17,5 +17,8 @@ export const setState = (newState) => {
 }
 
 export const setStatus = (status) => {
-  return { type: ACTIONS.SET_STATUS, payload: { status } }
+  return {
+    type: ACTIONS.SET_STATUS,
+    payload: { status }
+  }
 }

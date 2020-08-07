@@ -1,18 +1,24 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const COLORS = {
-  primary: 'hsl(258deg, 100%, 50%)',        // Bright purple
-  primary_hover: 'hsl(258deg, 100%, 90%)',  // Translucent purple
+  primary: 'hsl(258deg, 100%, 50%)', // Bright purple
+  primary_hover: 'hsl(258deg, 100%, 90%)', // Translucent purple
 }
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Work+Sans:wght@700&display=swap');
+
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .titleFont {
+    font-family: 'Work Sans', sans-serif;
+  }
+  
   * {
     margin: 0;
     padding: 0;
-  }
-
-  body {
-    margin: 0 20px;
   }
 
   a {

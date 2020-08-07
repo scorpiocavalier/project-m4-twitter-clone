@@ -54,7 +54,7 @@ const CurrentUserProvider = ({ children }) => {
   }, [])
 
   return (
-    <CurrentUserContext.Provider value={state}>
+    <CurrentUserContext.Provider value={{ state, dispatch }}>
       {children}
     </CurrentUserContext.Provider>
   )

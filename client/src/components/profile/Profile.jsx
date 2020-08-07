@@ -11,7 +11,8 @@ import { ProfileAvatar } from '../Avatar'
 import { COLORS } from '../../globalStyles'
 
 export default () => {
-  const { currentUser, profileFeed } = useContext(CurrentUserContext)
+  const { state } = useContext(CurrentUserContext)
+  const {currentUser, profileFeed} = state
   const {
     avatarSrc,
     bannerSrc,

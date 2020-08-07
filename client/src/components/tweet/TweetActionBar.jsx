@@ -81,4 +81,5 @@ export default () => {
 const RowWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin-top: 10px;
 `

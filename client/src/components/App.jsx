@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Profile from './profile/Profile'
 import Sidebar from './sidebar/Sidebar'
+import Rightbar from './sidebar/Rightbar'
 import TweetFeed from './tweet/TweetFeed'
 import TweetDetails from './tweet/TweetDetails'
 import Error from './error/Error'
@@ -13,7 +14,8 @@ import { GlobalStyles } from '../globalStyles'
 import { STATUS } from '../actions'
 
 export default () => {
-  const { status, homeFeed } = useContext(CurrentUserContext)
+  const { state } = useContext(CurrentUserContext)
+  const { status, homeFeed } = state
 
   const renderByStatus = () => {
     switch (status) {
@@ -41,21 +43,52 @@ export default () => {
           </Switch>
         )
       default:
-        return
+        return <Error />
     }
   }
 
   return (
     <Router>
       <GlobalStyles />
-      <MainWrapper>
-        <Sidebar />
-        {renderByStatus()}
-      </MainWrapper>
+      <Grid>
+        <LeftAside>
+          <Sidebar />
+        </LeftAside>
+
+        <Main>{renderByStatus()}</Main>
+
+        <RightAside>
+          <Rightbar />
+        </RightAside>
+      </Grid>
     </Router>
   )
 }
 
-const MainWrapper = styled.div`
-  display: flex;
+const Grid = styled.div`
+  display: grid;
+  grid: auto / 1fr 2fr 4fr 2fr 1fr;
+  grid-template-areas: '. leftAside main rightAside .';
+  @media (max-width: 1200px) {
+    grid: auto / 1fr 8fr minmax(210px, 1fr);
+    grid-template-areas: 'leftAside main rightAside';
+  }
+  @media (max-width: 900px) {
+    grid: auto / 1fr 9fr;
+    grid-template-areas: 'leftAside main';
+  }
+`
+
+const LeftAside = styled.div`
+  grid-area: leftAside;
+  border-right: 2px solid #f6f6f9;
+`
+
+const Main = styled.div`
+  grid-area: main;
+`
+
+const RightAside = styled.div`
+  grid-area: rightAside;
+  border-left: 2px solid #f6f6f9;
 `

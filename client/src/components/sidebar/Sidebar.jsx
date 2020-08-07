@@ -38,8 +38,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-right: 15px;
-  border-right: 2px solid #f6f6f9;
+  padding: 0 15px;
 `
 
 const StyledLogo = styled(Logo)`
