@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
+import CurrentProfile from './profile/CurrentProfile'
 import Profile from './profile/Profile'
 import Sidebar from './sidebar/Sidebar'
 import Rightbar from './sidebar/Rightbar'
@@ -39,7 +40,10 @@ export default () => {
             <Route path="/tweet/:tweetId">
               <TweetDetails />
             </Route>
-            <Route path={`/profile`}>
+            <Route path={`/me/profile`}>
+              <CurrentProfile />
+            </Route>
+            <Route path={`/:handle/profile`}>
               <Profile />
             </Route>
           </Switch>

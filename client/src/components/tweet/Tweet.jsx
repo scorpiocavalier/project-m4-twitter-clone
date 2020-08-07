@@ -23,8 +23,10 @@ export default ({ tweet }) => {
 
   const history = useHistory()
 
-  const handleUsernameClick = () => {
-    history.push(`/profile`)
+  const handleUsernameClick = (handle) => {
+    handle === 'treasurymog'
+      ? history.push(`/me/profile`)
+      : history.push(`/${handle}/profile`)
   }
 
   const handleCardClick = () => {
@@ -48,7 +50,7 @@ export default ({ tweet }) => {
             <BoldText
               tabIndex="0"
               aria-label={displayName}
-              onClick={handleUsernameClick}
+              onClick={() => handleUsernameClick(handle)}
               style={{ cursor: 'pointer' }}
             >
               {displayName}
@@ -89,11 +91,7 @@ export const SingleTweetView = ({ tweet }) => {
   const history = useHistory()
 
   const handleUsernameClick = () => {
-    history.push(`/profile`)
-  }
-
-  const handleCardClick = () => {
-    history.push(`/tweet/${id}`)
+    history.push(`/me/profile`)
   }
 
   return (
@@ -111,7 +109,7 @@ export const SingleTweetView = ({ tweet }) => {
           <BoldText
             tabIndex="0"
             aria-label={displayName}
-            onClick={handleUsernameClick}
+            onClick={() => handleUsernameClick(handle)}
             style={{ cursor: 'pointer' }}
           >
             {displayName}

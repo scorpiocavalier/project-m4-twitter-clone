@@ -1,81 +1,91 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 import ProfileActionBar from './ProfileActionBar'
 import TweetHandle from '../tweet/TweetHandle'
-import TweetFeed from '../tweet/TweetFeed'
 import Timestamp from '../Timestamp'
+import Spinner from '../spinner/Spinner'
 import { CurrentUserContext } from '../CurrentUserContext'
 import { LocationIcon, CalendarIcon } from '../Icons'
 import { ProfileAvatar } from '../Avatar'
+import { STATUS, setStatus } from '../../actions'
 import { COLORS } from '../../globalStyles'
 
 export default () => {
-  const { state } = useContext(CurrentUserContext)
-  const {currentUser, profileFeed} = state
-  const {
-    avatarSrc,
-    bannerSrc,
-    bio,
-    displayName,
-    handle,
-    isBeingFollowedByYou,
-    isFollowingYou,
-    joined,
-    location,
-    numFollowers,
-    numFollowing,
-  } = currentUser
+  const {dispatch} = useContext(CurrentUserContext)
+  const [profileUser, setProfileUser] = useState(null)
+  const { handle } = useParams()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`/api/${handle}/profile`)
+        const user = await res.json()
+        setProfileUser(user.profile)
+      } catch (error) {
+        dispatch(setStatus(STATUS.ERROR))
+      }
+    }
+    fetchData()
+  }, [setProfileUser])
 
   return (
     <MainColWrapper>
-      <ProfileAvatar src={avatarSrc} size={'125px'} />
-      <ColWrapper style={{ position: 'relative', top: '-133px' }}>
-        <Banner src={bannerSrc} />
-        <ColWrapper style={{ alignItems: 'flex-end', padding: '20px 15px' }}>
-          <Button
-            className="btn-with-shadow"
-            style={{ background: COLORS.primary }}
-            tabIndex="0"
-            aria-label="Follow Button"
-          >
-            {isBeingFollowedByYou ? 'Following' : 'Follow'}
-          </Button>
-        </ColWrapper>
-        <ProfileWrapper>
-          <DisplayName className="titleFont">{displayName}</DisplayName>
-          <RowWrapper style={{ marginLeft: '10px' }}>
-            <TweetHandle handle={handle} />
-            {isFollowingYou && <FollowingText>Follows you</FollowingText>}
-          </RowWrapper>
-          <StyledSpan>{bio}</StyledSpan>
-          <RowWrapper>
-            <StyledSpan>
-              <LocationIcon />
-              {location}
-            </StyledSpan>
-            <StyledSpan>
-              <CalendarIcon />
-              Joined
-              <Timestamp timestamp={joined} />
-            </StyledSpan>
-          </RowWrapper>
-          <RowWrapper>
-            <StyledSpan>
-              <Bold600>{numFollowing}</Bold600> Following
-            </StyledSpan>
-            <StyledSpan>
-              <Bold600>{numFollowers}</Bold600> Followers
-            </StyledSpan>
-          </RowWrapper>
-        </ProfileWrapper>
-        <ProfileActionBar />
-        {currentUser && (
-          <ColWrapper>
-            <TweetFeed feed={profileFeed} />
+      {profileUser ? (
+        <>
+          <ProfileAvatar src={profileUser.avatarSrc} size={'125px'} />
+          <ColWrapper style={{ position: 'relative', top: '-133px' }}>
+            <Banner src={profileUser.bannerSrc} />
+            <ColWrapper
+              style={{ alignItems: 'flex-end', padding: '20px 15px' }}
+            >
+              <Button
+                className="btn-with-shadow"
+                style={{ background: COLORS.primary }}
+                tabIndex="0"
+                aria-label="Follow Button"
+              >
+                {profileUser.isBeingFollowedByYou ? 'Following' : 'Follow'}
+              </Button>
+            </ColWrapper>
+            <ProfileWrapper>
+              <DisplayName className="titleFont">
+                {profileUser.displayName}
+              </DisplayName>
+              <RowWrapper style={{ marginLeft: '10px' }}>
+                <TweetHandle handle={profileUser.handle} />
+                {profileUser.isFollowingYou && (
+                  <FollowingText>Follows you</FollowingText>
+                )}
+              </RowWrapper>
+              <StyledSpan>{profileUser.bio}</StyledSpan>
+              <RowWrapper>
+                <StyledSpan>
+                  <LocationIcon />
+                  {profileUser.location}
+                </StyledSpan>
+                <StyledSpan>
+                  <CalendarIcon />
+                  Joined
+                  <Timestamp timestamp={profileUser.joined} />
+                </StyledSpan>
+              </RowWrapper>
+              <RowWrapper>
+                <StyledSpan>
+                  <Bold600>{profileUser.numFollowing}</Bold600> Following
+                </StyledSpan>
+                <StyledSpan>
+                  <Bold600>{profileUser.numFollowers}</Bold600> Followers
+                </StyledSpan>
+              </RowWrapper>
+            </ProfileWrapper>
+            <ProfileActionBar />
           </ColWrapper>
-        )}
-      </ColWrapper>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </MainColWrapper>
   )
 }
