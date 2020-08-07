@@ -17,7 +17,7 @@ export default () => {
   const { state } = useContext(CurrentUserContext)
   const { status, homeFeed } = state
 
-  console.log('App', status)
+  console.log('STATUS:', status)
 
   const renderByStatus = () => {
     switch (status) {

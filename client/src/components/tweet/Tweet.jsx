@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { setStatus, STATUS } from '../../actions'
 import TweetActionBar from './TweetActionBar'
 import TweetHandle from './TweetHandle'
 import Avatar from '../Avatar'
@@ -22,6 +21,16 @@ export default ({ tweet }) => {
     timestamp,
   } = tweet
 
+  const history = useHistory()
+
+  const handleUsernameClick = () => {
+    history.push(`/profile`)
+  }
+
+  const handleCardClick = () => {
+    history.push(`/tweet/${id}`)
+  }
+
   const [retweeted, setRetweeted] = useState(isRetweeted)
 
   return (
@@ -32,22 +41,31 @@ export default ({ tweet }) => {
           {state.currentUser.displayName} Remeowed
         </RowRetweetWrapper>
       )}
-      <Button to={`/tweet/${id}`}>
-        <RowWrapper>
-          <Avatar src={avatarSrc} />
-          <ColWrapper>
-            <RowWrapper>
-              <BoldText tabIndex="0" aria-label={displayName}>
-                {displayName}
-              </BoldText>
-              <TweetHandle handle={handle} />
-              {`·`}
-              <Timestamp timestamp={timestamp} />
-            </RowWrapper>
-            <p>{status}</p>
-          </ColWrapper>
-        </RowWrapper>
-      </Button>
+      <RowWrapper>
+        <Avatar src={avatarSrc} />
+        <ColWrapper>
+          <RowWrapper>
+            <BoldText
+              tabIndex="0"
+              aria-label={displayName}
+              onClick={handleUsernameClick}
+              style={{ cursor: 'pointer' }}
+            >
+              {displayName}
+            </BoldText>
+            <TweetHandle handle={handle} />
+            {`·`}
+            <Timestamp timestamp={timestamp} />
+          </RowWrapper>
+          <p
+            tabIndex="0"
+            onClick={handleCardClick}
+            style={{ cursor: 'pointer' }}
+          >
+            {status}
+          </p>
+        </ColWrapper>
+      </RowWrapper>
       <ColMediaWrapper>
         {media.length ? <MediaWrapper src={media[0].url} /> : null}
         <TweetActionBar setRetweeted={setRetweeted} />
@@ -57,7 +75,7 @@ export default ({ tweet }) => {
 }
 
 export const SingleTweetView = ({ tweet }) => {
-  const { state, dispatch } = useContext(CurrentUserContext)
+  const { state } = useContext(CurrentUserContext)
 
   const {
     author: { avatarSrc, displayName, handle },
@@ -68,6 +86,16 @@ export const SingleTweetView = ({ tweet }) => {
     timestamp,
   } = tweet
 
+  const history = useHistory()
+
+  const handleUsernameClick = () => {
+    history.push(`/profile`)
+  }
+
+  const handleCardClick = () => {
+    history.push(`/tweet/${id}`)
+  }
+
   return (
     <ColTweetWrapper tabIndex="0" aria-label="Tweet">
       {isRetweeted && (
@@ -77,21 +105,24 @@ export const SingleTweetView = ({ tweet }) => {
         </RowRetweetWrapper>
       )}
 
-      <Button to={`/tweet/${id}`} onClick={() => console.log(id)}>
-        <RowWrapper>
-          <Avatar src={avatarSrc} />
-          <ColWrapper>
-            <BoldText tabIndex="0" aria-label={displayName}>
-              {displayName}
-            </BoldText>
-            <TweetHandle handle={handle} />
-          </ColWrapper>
-        </RowWrapper>
+      <RowWrapper>
+        <Avatar src={avatarSrc} />
+        <ColWrapper>
+          <BoldText
+            tabIndex="0"
+            aria-label={displayName}
+            onClick={handleUsernameClick}
+            style={{ cursor: 'pointer' }}
+          >
+            {displayName}
+          </BoldText>
+          <TweetHandle handle={handle} />
+        </ColWrapper>
+      </RowWrapper>
 
-        <RowWrapper>
-          <Status>{status}</Status>
-        </RowWrapper>
-      </Button>
+      <RowWrapper>
+        <Status>{status}</Status>
+      </RowWrapper>
 
       {media.length ? <MediaWrapper src={media[0].url} /> : null}
 
@@ -139,13 +170,6 @@ const MediaWrapper = styled.img`
 
 const BoldText = styled.span`
   font-weight: 600;
-`
-
-const Button = styled(Link)`
-  color: black;
-  &:hover {
-    color: black;
-  }
 `
 
 const TimestampWrapper = styled(RowWrapper)`
