@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -11,7 +11,7 @@ import { RepeatIconSmall } from '../Icons'
 import { CurrentUserContext } from '../CurrentUserContext'
 
 export default ({ tweet }) => {
-  const { state, dispatch } = useContext(CurrentUserContext)
+  const { state } = useContext(CurrentUserContext)
 
   const {
     author: { avatarSrc, displayName, handle },
@@ -22,18 +22,17 @@ export default ({ tweet }) => {
     timestamp,
   } = tweet
 
+  const [retweeted, setRetweeted] = useState(isRetweeted)
+
   return (
     <ColTweetWrapper tabIndex="0" aria-label="Tweet">
-      {isRetweeted && (
+      {retweeted && (
         <RowRetweetWrapper>
           <RepeatIconSmall />
           {state.currentUser.displayName} Remeowed
         </RowRetweetWrapper>
       )}
-      <Button
-        to={`/tweet/${id}`}
-        onClick={() => dispatch(setStatus(STATUS.LOADING))}
-      >
+      <Button to={`/tweet/${id}`}>
         <RowWrapper>
           <Avatar src={avatarSrc} />
           <ColWrapper>
@@ -51,7 +50,7 @@ export default ({ tweet }) => {
       </Button>
       <ColMediaWrapper>
         {media.length ? <MediaWrapper src={media[0].url} /> : null}
-        <TweetActionBar />
+        <TweetActionBar setRetweeted={setRetweeted} />
       </ColMediaWrapper>
     </ColTweetWrapper>
   )
@@ -78,10 +77,7 @@ export const SingleTweetView = ({ tweet }) => {
         </RowRetweetWrapper>
       )}
 
-      <Button
-        to={`/tweet/${id}`}
-        onClick={() => dispatch(setStatus(STATUS.LOADING))}
-      >
+      <Button to={`/tweet/${id}`} onClick={() => console.log(id)}>
         <RowWrapper>
           <Avatar src={avatarSrc} />
           <ColWrapper>

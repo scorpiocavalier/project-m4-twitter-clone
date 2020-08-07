@@ -17,7 +17,7 @@ export const ACTION = {
   SET_TOGGLE: 'set-comment',
 }
 
-export default () => {
+export default ({ setRetweeted }) => {
   const reducer = (state, action) => {
     const { type, payload } = action
     switch (type) {
@@ -52,7 +52,8 @@ export default () => {
       />
       <TweetAction
         targetState={state.isRetweeted}
-        targetStateStr={'isRetweeted'}
+        targetStateStr={ 'isRetweeted' }
+        setRetweeted={setRetweeted}
         dispatch={dispatch}
         icon1={<RepeatIcon />}
         icon2={<RepeatIcon2 />}

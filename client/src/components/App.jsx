@@ -17,6 +17,8 @@ export default () => {
   const { state } = useContext(CurrentUserContext)
   const { status, homeFeed } = state
 
+  console.log('App', status)
+
   const renderByStatus = () => {
     switch (status) {
       case STATUS.ERROR:

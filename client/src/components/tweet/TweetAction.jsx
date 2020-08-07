@@ -2,7 +2,15 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ACTION } from './TweetActionBar'
 
-export default ({ targetState, targetStateStr, dispatch, icon1, icon2, hoverColor }) => {
+export default ({
+  targetState,
+  targetStateStr,
+  dispatch,
+  icon1,
+  icon2,
+  hoverColor,
+  setRetweeted = null,
+}) => {
   const [count, setCount] = useState(null)
 
   return (
@@ -11,6 +19,7 @@ export default ({ targetState, targetStateStr, dispatch, icon1, icon2, hoverColo
         onClick={(e) => {
           dispatch({ type: ACTION.TOGGLE_STATE, payload: { targetStateStr } })
           setCount(!count ? 1 : null)
+          setRetweeted && setRetweeted((prevVal) => !prevVal)
         }}
         hoverColor={hoverColor}
       >
