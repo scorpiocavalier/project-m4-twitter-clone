@@ -13,6 +13,7 @@ import Spinner from './spinner/Spinner'
 import { CurrentUserContext } from './CurrentUserContext'
 import { GlobalStyles } from '../globalStyles'
 import { STATUS } from '../actions'
+import { Homefeed } from './home/Homefeed'
 
 export default () => {
   const { state } = useContext(CurrentUserContext)
@@ -30,7 +31,7 @@ export default () => {
         return (
           <Switch>
             <Route exact path="/">
-              <TweetFeed feed={homeFeed} />
+              <Homefeed feed={homeFeed} />
             </Route>
             <Route
               path="/notifications"
